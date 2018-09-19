@@ -1,6 +1,6 @@
 "use strict";
 /*
-* creates a resource
+* get a resource
 */
 
 const Resource = require('../lib/Resource');

@@ -68,6 +68,7 @@ functions:
           resp: https
           cors: true
           integration: lambda-proxy
+
   getResourceByEmail:
     handler: Resource/handlers/getResourceByEmail.getResourceByEmail
     name: getResourceByEmail
@@ -83,7 +84,29 @@ functions:
               paths:
                 id: true
 
-          
+  createBookable:
+    handler: Bookable/handlers/createBookable.createBookable
+    name: createBookable
+    events:
+      - http:
+          method: POST
+          path: /bookable
+          resp: https
+          cors: true
+          integration: lambda-proxy
+  
+  getBookableByResourceId:
+    handler: Bookable/handlers/getBookableByResourceId.getBookableByResourceId
+    name: getBookableByResourceId
+    events:
+      - http:
+          method: GET
+          path: /bookable/resource/{resourceId}
+          resp: https
+          cors: true
+          integration: lambda-proxy
+
+          # getBookableByResourceId
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

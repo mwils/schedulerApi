@@ -4,3 +4,7 @@ jspm_packages
 
 # Serverless directories
 .serverless
+
+# local dev
+.vagrant
+.DS_Store

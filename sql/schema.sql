@@ -15,4 +15,15 @@ CREATE TABLE IF NOT EXISTS `resources` (
   PRIMARY KEY (`id`), UNIQUE (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `bookables` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(50) NOT NULL,
+  `duration` int NOT NULL,
+  `minNotice` int NOT NULL DEFAULT 0,
+  `minCancelNotice` int NOT NULL DEFAULT 0,
+  `maxFuture` int,
+  `resourceId` int(11) NOT NULL,
+  PRIMARY KEY (`id`), FOREIGN KEY (resourceId) REFERENCES resources(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 COMMIT;
