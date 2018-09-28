@@ -15,6 +15,13 @@ CREATE TABLE IF NOT EXISTS `resources` (
   PRIMARY KEY (`id`), UNIQUE (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`), UNIQUE (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE IF NOT EXISTS `bookables` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(50) NOT NULL,
@@ -24,6 +31,27 @@ CREATE TABLE IF NOT EXISTS `bookables` (
   `maxFuture` int,
   `resourceId` int(11) NOT NULL,
   PRIMARY KEY (`id`), FOREIGN KEY (resourceId) REFERENCES resources(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `hours` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `DOW` int(1) NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL,
+  `resourceId` int(11) NOT NULL,
+  PRIMARY KEY (`id`), FOREIGN KEY (resourceId) REFERENCES resources(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `bookings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `startDateTime` dateTime NOT NULL,
+  `clientId` int(11) NOT NULL,
+  `bookableId` int(11) NOT NULL,
+  `resourceId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (clientId) REFERENCES clients(id),
+  FOREIGN KEY (bookableId) REFERENCES bookables(id),
+  FOREIGN KEY (resourceId) REFERENCES resources(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 COMMIT;

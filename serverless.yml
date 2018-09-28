@@ -106,6 +106,67 @@ functions:
           cors: true
           integration: lambda-proxy
 
+  createHours:
+    handler: Hours/handlers/createHours.createHours
+    name: createHours
+    events:
+      - http:
+          method: POST
+          path: /hours
+          resp: https
+          cors: true
+          integration: lambda-proxy
+
+  getHoursByResourceId:
+    handler: Hours/handlers/getHoursByResourceId.getHoursByResourceId
+    name: getHoursByResourceId
+    events:
+      - http:
+          method: GET
+          path: /hours/resource/{resourceId}
+          resp: https
+          cors: true
+          integration: lambda-proxy
+
+  createClient:
+    handler: Client/handlers/createClient.createClient
+    name: createClient
+    events:
+      - http:
+          method: POST
+          path: /client
+          resp: https
+          cors: true
+          integration: lambda-proxy
+
+  getClientByEmail:
+    handler: Client/handlers/getClientByEmail.getClientByEmail
+    name: getClientByEmail
+    events:
+      - http:
+          method: GET
+          path: /client/email/{email}
+          resp: https
+          cors: true
+          integration: lambda-proxy
+          request:
+            parameters:
+              paths:
+                id: true
+  getAvailability:
+    handler: Availability/handlers/getAvailability.getAvailability
+    name: getAvailability
+    events:
+      - http:
+          method: GET
+          path: /availability/{resourceId}
+          resp: https
+          cors: true
+          integration: lambda-proxy
+          request:
+            parameters:
+              querystrings:
+                startDateTime: true ## todo
           # getBookableByResourceId
 
 #    The following are a few example events you can configure
