@@ -11,6 +11,7 @@ class Hours extends DataItem {
 
   /**
    * Creates a new hours
+   * DOW 0 = Sunday per momentjs
    * @param {Object} hoursObject 
    * @returns {Promise<Array>} resolves to the entry results, rejects error with http style error
    */

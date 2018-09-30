@@ -154,19 +154,21 @@ functions:
               paths:
                 id: true
   getAvailability:
-    handler: Availability/handlers/getAvailability.getAvailability
+    handler: Availability/handlers/getAvailabilities.getAvailabilities
     name: getAvailability
     events:
       - http:
           method: GET
-          path: /availability/{resourceId}
+          path: /availabilities/{resourceId}/{bookableId}
           resp: https
           cors: true
           integration: lambda-proxy
           request:
             parameters:
               querystrings:
-                startDateTime: true ## todo
+                start: true ## todo
+                interval: true ## todo
+                limit: true ## todo
           # getBookableByResourceId
 
 #    The following are a few example events you can configure
