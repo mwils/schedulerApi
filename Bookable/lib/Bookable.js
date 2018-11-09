@@ -17,6 +17,8 @@ class Bookable extends DataItem {
    */
   create(bookableObject) {
     return new Promise((resolve, reject) => {
+      // TODO MOCK resourceId
+      bookableObject.resourceId = 1;
       if (!bookableObject.label || !bookableObject.duration || !bookableObject.resourceId) {
         return reject(this.validationError());
       }

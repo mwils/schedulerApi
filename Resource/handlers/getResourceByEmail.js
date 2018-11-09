@@ -4,7 +4,6 @@
 */
 
 const Resource = require('../lib/Resource');
-//import Resource from "../lib/Resource";
 const resource = new Resource();
 
 exports.getResourceByEmail = function (event, context, callback) {

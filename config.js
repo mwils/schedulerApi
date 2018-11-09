@@ -1,3 +1,5 @@
+// Default config
+// Todo update and remove from repo
 "use strict";
 let config = {
   mysqlDB: {
