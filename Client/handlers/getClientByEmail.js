@@ -3,8 +3,7 @@
 * get a client
 */
 
-const Client = require('../lib/Client');
-//import Client from "../lib/Client";
+const Client = require('../lib/Client'); 
 const client = new Client();
 
 exports.getClientByEmail = function (event, context, callback) {

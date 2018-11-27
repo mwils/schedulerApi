@@ -67,6 +67,17 @@ functions:
           cors: true
           integration: lambda-proxy
 
+  deleteHourById:
+    handler: Hours/handlers/deleteHours.deleteHours
+    name: deleteHour
+    events:
+      - http:
+          method: DELETE
+          path: /hours/{hoursId}
+          resp: https
+          cors: true
+          integration: lambda-proxy
+
   getHoursByResourceId:
     handler: Hours/handlers/getHoursByResourceId.getHoursByResourceId
     name: getHoursByResourceId
